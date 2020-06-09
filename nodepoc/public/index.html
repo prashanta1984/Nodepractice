@@ -1,0 +1,23 @@
+<form id="myform" action="login" method="post">
+    <input type="text" name="user" value="User Name">
+    <input type="text" name="pass" value="Password"> </form>
+    <div class="btn">Click Me</div>
+    <script>
+    const btn = document.querySelector('.btn');
+    btn.addEventListener('click', function () {
+    const formData = new FormData(document.forms[0]);
+    const searchParams = new URLSearchParams();
+    for (const val of formData) {
+    console.log(val);
+    searchParams.append(val[0], val[1]);
+    }
+    fetch('/login', {
+    method: 'post'
+    , body: searchParams
+    }).then(function (response) {
+    return response.json()
+    }).then(function (data) {
+    return console.log(data);
+    })
+    })
+    </script>

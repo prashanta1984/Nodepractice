@@ -1,0 +1,23 @@
+
+
+
+
+install package using npm
+--------------------------
+npm install -g jshint
+npm init
+npm init --yes
+npm i underscore
+npm list
+npm list --depth=0
+npm view mongoose
+npm view mongoose dependencies
+npm view mongoose versions
+npm i mongoose@2.4.2
+npm outdated
+npm update
+npm i -g npm-check-updates
+ncu
+ncu -u
+npm i jshint --save-dev
+npm un mongoose

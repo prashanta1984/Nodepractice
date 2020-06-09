@@ -1,0 +1,166 @@
+basic command:
+--------------
+node --version  or node -v
+
+complile the program :
+---------------------
+node logger.js
+
+Build a node program
+-------------------
+mkdir npm-demo
+cd npm-demo
+npm init
+npm init --yes----it will create a package.json file
+
+npm installation
+-----------------
+npm i -g npm@5.5.1
+
+
+install package using npm
+--------------------------
+npm install -g jshint
+
+npm i underscore
+npm list
+npm list --depth=0
+npm view mongoose
+npm view mongoose dependencies
+npm view mongoose versions
+npm i mongoose@2.4.2
+npm outdated
+npm update
+npm i -g npm-check-updates
+ncu
+ncu -u
+npm i jshint --save-dev
+npm un mongoose
+
+
+program:
+--------
+var -=require('underscore')
+
+depencies
+---------
+npm list
+npm list --depth=0
+
+npm view mongoose
+npm view mongoose dependencies
+
+npm view mongoose versions
+npm i mongoose@2.4.2
+npm outdated
+npm update(update minor and patch releases)
+npm i -g npm-check-updates(ncu)
+ncu -u(updated package .json)
+npm i jshinit --save-dev
+npm un mongoose
+
+publish own package in npm regitries
+-----------------------------------
+create account
+npm adduser
+
+
+
+
+
+
+-----------------------
+const logger=require('./logger');
+const path=require('path');
+const osInfo=require('os');
+
+logger.js
+---------------
+console.log(__filename);
+var url='https://google.com';
+function log(message)
+{
+    console.log(message);
+}
+
+module.exports.log=log;
+
+fileevent
+-----------
+const fs=require('fs');
+
+const pathObj=path.parse(__filename);
+logger.log(pathObj);
+
+logger.log(osInfo.freeMemory);
+//logger=1;
+
+logger.info(f)
+logger.log('hello world');
+
+file
+------
+const path=require('fs');
+//const files=path.readdirSync('./');
+//console.log(files);
+path.readdir('./',function(err,files) {
+   if(err) console.log('Error',err);
+   console.log('result',files);
+}
+);
+ event1:
+const path=require('fs');
+const EventEmmiter=require('events');
+//const files=path.readdirSync('./');
+//console.log(files);
+path.readdir('./',function(err,files) {
+   if(err) console.log('Error',err);
+   console.log('result',files);
+}
+);
+const emmiter=new EventEmmiter();
+emmiter.on('MessageLogged',function(){
+    console.log('MesageEvent logged');
+});
+emmiter.emit('MessageLogged');
+-----
+Event2
+const path=require('fs');
+const EventEmmiter=require('events');
+//const files=path.readdirSync('./');
+//console.log(files);
+path.readdir('./',function(err,files) {
+   if(err) console.log('Error',err);
+   console.log('result',files);
+}
+);
+const emmiter=new EventEmmiter();
+emmiter.on('MessageLogged',function(eventArg){
+    console.log('MesageEvent logged',eventArg);
+});
+emmiter.emit('MessageLogged',{id:1,url:'http://'});
+
+evnt3
+======
+app.js
+const EventEmitter=require('events');
+
+const Logger=require('./logger');
+const logger=new Logger();
+logger.on('MessageLogged',(eventArg)=>{
+    console.log('MesageEvent logged',eventArg);
+});
+
+logger.log('message');
+
+logger.js
+----------
+const EventEmitter=require('events');
+class Logger extends EventEmitter{
+   log(message)
+    {   
+    console.log(message);
+    this.emit('MessageLogged',{id:1,url:'http://'});
+    }
+}
+module.exportss=Logger;
